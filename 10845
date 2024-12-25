@@ -1,0 +1,78 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+public class Main {
+    static int front = 0, rear = 0;
+    static int[] queue = new int[10001];
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            switch (sc.next()) {
+                case "push":
+                    push(sc.nextInt());
+                    break;
+                case "pop":
+                    pop();
+                    break;
+                case "size":
+                    size();
+                    break;
+                case "empty":
+                    isEmpty();
+                    break;
+                case "front":
+                    front();
+                    break;
+                case "back":
+                    back();
+                    break;
+            }
+        }
+    }
+
+    static void push(int x) {
+        queue[rear++] = x;
+    }
+    static void pop() {
+        if(front == rear) {
+            System.out.println("-1");
+        }
+        else {
+            System.out.println(queue[front++]);
+        }
+    }
+    static void size() {
+        System.out.println(rear-front);
+    }
+    static void isEmpty() {
+        if(front == rear) {
+            System.out.println("1");
+        }
+        else {
+            System.out.println("0");
+        }
+    }
+    static void front() {
+        if(front == rear) {
+            System.out.println("-1");
+        }
+        else {
+            System.out.println(queue[front]);
+        }
+    }
+    static void back() {
+        if(front == rear) {
+            System.out.println("-1");
+        }
+        else {
+            System.out.println(queue[rear-1]);
+        }
+    }
+}
