@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt(); // 전체 사람 수
+        int K = sc.nextInt(); // 제거 순서
+        int size = N, curr = K - 1;
+
+        int[] queue = new int[N];
+        for (int i = 0; i < N; i++) {
+            queue[i] = i + 1;
+        }
+        StringBuilder result = new StringBuilder();
+
+        result.append("<");
+        while (size > 0) {
+            result.append(queue[curr]);
+            queue[curr] = 0;
+            size--;
+
+            if (size > 0) {
+                result.append(", "); // 남은 요소가 있으면 쉼표 추가
+            }
+
+            int count = 0; // 내부 루프용 카운트 초기화
+            while (size != 0 && count < K) {
+                curr++;
+                curr = curr % N; // 원형 큐 처리
+
+                if (queue[curr] != 0) {
+                    count++;
+                }
+            }
+        }
+
+        result.append(">");
+
+        System.out.println(result);
+    }
+}
