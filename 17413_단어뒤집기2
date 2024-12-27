@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int n;
+        Scanner sc = new Scanner(System.in);
+
+
+        String test;
+
+        test = sc.nextLine();
+        test = reverse(test);
+        System.out.println(test);
+    }
+
+    public static String reverse(String s) {
+        char[] chars = s.toCharArray();
+        StringBuilder rs = new StringBuilder();
+        int end, start = 0, tag = 0;
+
+        for(int i = 0; i < chars.length; i++) {
+
+
+            if(chars[i] == ' ') {
+                rs.append(chars[i]);
+            }
+            else if(chars[i] == '<') {
+                while(chars[i] != '>') {
+                    rs.append(chars[i]);
+                    i++;
+                }
+                rs.append(chars[i]);
+            }
+            else{
+                start = i;
+                while(true){
+                    if(i+1 == chars.length || chars[i+1] == ' ' || chars[i+1] == '<') {
+                        end = i;
+                        break;
+                    }
+                    i++;
+                }
+
+                for(int j = end; j >= start; j--) {
+                    rs.append(chars[j]);
+                }
+            }
+        }
+
+        return rs.toString();
+    }
+}
