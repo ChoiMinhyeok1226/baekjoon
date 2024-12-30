@@ -1,0 +1,37 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+
+        String input = sc.nextLine();
+        Stack<Character> stack = new Stack<>();
+
+        char[] chars = input.toCharArray();
+
+        int count = 0, rs = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == '(') {
+                stack.push(chars[i]);
+            }
+            else if (chars[i] == ')') {
+                if(chars[i-1] == '('){
+                    stack.pop();
+                    rs = rs + stack.size();
+                }
+                else{//쇠막대기의 끝
+                    rs++;
+                    stack.pop();
+                }
+            }
+        }
+
+        System.out.println(rs);
+
+    }
+}
