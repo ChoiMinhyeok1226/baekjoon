@@ -1,0 +1,25 @@
+import java.io.*;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Stack;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        String[] ABCD = new String[4];
+
+        long rs = 0;
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        for(int i = 0; i < 4; i++){
+            ABCD[i] = st.nextToken();
+        }
+
+        rs = Long.parseLong(ABCD[0] + ABCD[1]) + Long.parseLong((ABCD[2] + ABCD[3]));
+
+        System.out.println(rs);
+    }
+}
