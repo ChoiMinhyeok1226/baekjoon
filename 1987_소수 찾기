@@ -1,0 +1,37 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
+
+        String[] string = br.readLine().split(" ");
+
+        int tmp, count = 0;
+
+        for (String s : string) {
+            tmp = Integer.parseInt(s);
+            if(checkPrime(tmp)) {
+                count++;
+            }
+        }
+
+        System.out.println(count);
+    }
+
+    static boolean checkPrime(int n) {
+        if(n < 2) return false;
+
+        int i = 2;
+        while(i <= n/2) {
+            if(n % i == 0) {
+                return false;
+            }
+            i++;
+        }
+
+        return true;
+    }
+
+}
