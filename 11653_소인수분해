@@ -1,0 +1,20 @@
+import java.io.*;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+
+        int x = 2;
+        int r;
+        while (N >= x) {
+            if (N % x == 0) {
+                System.out.println(x);
+                N /= x;
+            } else {
+                x++;
+            }
+        }
+    }
+}
