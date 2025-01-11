@@ -1,0 +1,30 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        // 입력 처리
+        String[] input = br.readLine().split(" ");
+        char[] chars = input[0].toCharArray();
+        int B = Integer.parseInt(input[1]);
+
+        long sum = 0;
+        int power = 1; // B^0부터 시작
+
+        // 역순으로 계산 (가장 낮은 자릿수부터)
+        for (int i = chars.length - 1; i >= 0; i--) {
+            int x;
+            if (chars[i] >= 'A' && chars[i] <= 'Z') {
+                x = chars[i] - 'A' + 10; // 'A'는 10, 'B'는 11, ..., 'Z'는 35
+            } else {
+                x = chars[i] - '0'; // 숫자는 그대로 변환
+            }
+
+            sum += x * power;
+            power *= B; // 자릿값 증가
+        }
+
+        System.out.println(sum);
+    }
+}
